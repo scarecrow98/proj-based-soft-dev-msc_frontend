@@ -1,0 +1,50 @@
+<div class="login-wrapper">
+    <form class="login" [formGroup]="form" (ngSubmit)="login()">
+        <section class="title">
+            <h3 class="welcome">Welcome to</h3>
+            University of Pannonia
+            <h5 class="hint">Login</h5>
+        </section>
+        <div class="login-group">
+            <!-- <clr-select-container>
+                <label>User Role</label>
+                <select clrSelect name="type">
+                    <option value="local">Local Users</option>
+                    <option value="admin">Administrator</option>
+                </select>
+            </clr-select-container> -->
+            <clr-input-container>
+                <label class="clr-sr-only">Username</label>
+                <input type="text" name="username" clrInput placeholder="Username" formControlName="username"/>
+                <clr-control-error *ngIf="form.get('username')?.hasError('required')">
+                    Username is required
+                </clr-control-error>
+            </clr-input-container>
+            <clr-password-container>
+                <label class="clr-sr-only">Password</label>
+                <input type="password" name="password" clrPassword placeholder="Password" formControlName="password"/>
+                <clr-control-error *ngIf="form.get('password')?.hasError('required')">
+                    Password is required
+                </clr-control-error>
+            </clr-password-container>
+
+            <!-- <div class="error active">
+                Invalid user name or password
+            </div> -->
+            <div *ngIf="loading$ | async; else notLoading">
+                <clr-spinner clrInline></clr-spinner>
+                <span>
+                    Logging in...
+                </span>
+            </div>
+            <ng-template #notLoading>
+                <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Login</button>
+            </ng-template>
+            <!-- <a href="javascript://" class="signup">Sign up for a Company ID</a> -->
+        </div>
+    </form>
+
+    <div class="login-cover">
+        
+    </div>
+</div>

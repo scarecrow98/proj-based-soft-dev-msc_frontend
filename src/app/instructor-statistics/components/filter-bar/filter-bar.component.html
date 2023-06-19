@@ -1,0 +1,59 @@
+<div class="filter-bar-component">
+    <ng-container *ngIf="filterValues; else noValues">
+        <form [formGroup]="form" class="filter-form">
+            <div class="filter-input-container">
+                <label for="">Semester</label>
+                <ng-select [multiple]="true" formControlName="semesterNames" [hideSelected]="true">
+                    <ng-option *ngFor="let item of filterValues.semesterNames" [value]="item">
+                        {{ item }}
+                    </ng-option>
+                </ng-select>
+            </div>
+            <div class="filter-input-container">
+                <label for="">Subject code</label>
+                <ng-select [multiple]="true" formControlName="subjectCodes" [hideSelected]="true">
+                    <ng-option *ngFor="let item of filterValues.subjectCodes" [value]="item">
+                        {{ item }}
+                    </ng-option>
+                </ng-select>
+            </div>
+            <div class="filter-input-container">
+                <label for="">Subject</label>
+                <ng-select [multiple]="true" formControlName="subjectNames" [hideSelected]="true">
+                    <ng-option *ngFor="let item of filterValues.subjectNames" [value]="item">
+                        {{ item }}
+                    </ng-option>
+                </ng-select>
+            </div>
+            <div class="filter-input-container">
+                <label for="">Instructor</label>
+                <ng-select [multiple]="true" formControlName="teacherNames" [hideSelected]="true">
+                    <ng-option *ngFor="let item of filterValues.teacherNames" [value]="item">
+                        {{ item }}
+                    </ng-option>
+                </ng-select>
+            </div>
+        </form>
+
+        <div class="filter-buttons">
+            <div class="filter-button-group">
+                <button class="btn btn-link" (click)="reset()">
+                    Reset filters
+                </button>
+                <button class="btn btn-link" (click)="useAll()">
+                    Use All Filters
+                </button>
+            </div>
+            <button class="btn btn-primary" (click)="submit()">
+                Filter
+            </button>
+        </div>
+    </ng-container>
+    <ng-template #noValues>
+        <span class="spinner spinner-inline">
+        </span>
+        <span>
+            Loading filters...
+        </span>
+    </ng-template>
+</div>

@@ -1,0 +1,18 @@
+<div class="data-import-component">
+    <h3>Import data from Excel file</h3>
+
+    <div class="clr-row">
+        <section class="upload-section clr-col-6">
+            <h4>Course Statistics</h4>
+            <app-upload-form (onUpload)="importCourseStatistics($event)"
+                [loading]="!!(courseStatisticsLoading$ | async)"
+                [importResult]="courseImportResult$ | async"></app-upload-form>
+        </section>
+        <section class="upload-section clr-col-6">
+            <h4>Student Survival Analysis</h4>
+            <app-upload-form (onUpload)="importSurvivalAnalysis($event)"
+                [loading]="!!(studentStatisticsLoading$ | async)"
+                [importResult]="studentImportResult$ | async"></app-upload-form>
+        </section>
+    </div>
+</div>

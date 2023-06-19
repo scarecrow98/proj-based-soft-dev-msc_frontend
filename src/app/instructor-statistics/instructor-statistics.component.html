@@ -1,0 +1,35 @@
+<div class="instructor-statistics-component">
+    <h3>Instructor Statistics</h3>  
+
+    <div class="filter-container">
+        <h4>Filters</h4>
+        <app-filter-bar
+            [filterValues]="filterValues$ | async"
+            (onFilter)="filterResults($event)"></app-filter-bar>
+    </div>
+
+    <div class="result-container">
+        <h4>Results</h4>
+        <ng-container *ngIf="loading$ | async">
+            <span class="spinner spinner-inline">
+            </span>
+            <span>
+                Loading filters...
+            </span>
+        </ng-container>
+
+        <ng-container *ngIf="(results$ | async) as results; else noResults">
+            <app-stat-results [results]="results"></app-stat-results>
+        </ng-container>
+        <ng-template #noResults>
+            <clr-alert
+            [clrAlertType]="'warning'">
+            <clr-alert-item>
+                <span class="alert-text">
+                    No results...
+                </span>
+            </clr-alert-item>
+        </clr-alert>
+        </ng-template>
+    </div>
+</div>

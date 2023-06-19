@@ -1,0 +1,28 @@
+<div class="stat-results">
+    <table class="table table-vertical table-noborder table-compact"
+        style="max-width: 300px"
+        *ngIf="stats">
+        <tbody>
+            <tr>
+                <th>Neptun Code</th>
+                <td>{{ stats.neptunCode }}</td>
+            </tr>
+            <tr>
+                <th>Credit points</th>
+                <td>{{ stats.credit }}</td>
+            </tr>
+            <tr>
+                <th>Admission Semester</th>
+                <td>{{ stats.admissionSemester }}</td>
+            </tr>
+            <tr>
+                <th>Semester Count</th>
+                <td>{{ stats.semesterCount }}</td>
+            </tr>
+            <tr>
+                <th>Weighted Grade Point Average</th>
+                <td>{{ stats.weightedGradePointAverage | number }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

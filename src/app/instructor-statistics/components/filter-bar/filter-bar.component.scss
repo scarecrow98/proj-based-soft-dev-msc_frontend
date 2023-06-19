@@ -1,0 +1,16 @@
+.filter-bar-component {
+    form.filter-form {
+        display: flex;
+        gap: 40px;
+        justify-content: space-between;
+    
+        .filter-input-container {
+            flex: 1;
+        }
+    }
+
+    .filter-buttons {
+        display: flex;
+        justify-content: space-between;
+    }
+}

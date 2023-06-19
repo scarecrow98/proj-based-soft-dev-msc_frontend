@@ -1,0 +1,21 @@
+<div class="user-management-component">
+    <h3>Add or manage users</h3>
+
+    <div class="clr-row">
+        <section class="clr-col-6">
+            <h4>Add users</h4>
+           <app-register-user-form (onSubmit)="registerUser($event)" #registrationForm></app-register-user-form>
+        </section>
+
+        <section class="clr-col-6">
+            <h4>Manage users</h4>
+
+            <ng-container *ngIf="userManagementService.users$ | async as users; else noUsers">
+                <app-user-list [users]="users" (onToggleAdmin)="toggleAdmin($event)"></app-user-list>
+            </ng-container>
+            <ng-template #noUsers>
+                There are no users yet...
+            </ng-template>
+        </section>
+    </div>
+</div>

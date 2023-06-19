@@ -1,0 +1,27 @@
+<div class="survival-stats-component">
+    <div class="filter-bar" *ngIf="survivalAnalysisService.filterValues$ | async as filterValues">
+
+        <div class="filter-select-container">
+            <label for="">Student Neptun code</label>
+            <ng-select (change)="onFilterChange($event)">
+                <ng-option
+                    *ngFor="let item of filterValues.neptunCodes"
+                    [value]="item">
+                    {{ item }}
+                </ng-option>
+            </ng-select>
+        </div>
+
+        <!-- <button class="btn btn-primary">Show analysis</button> -->
+    </div>
+
+    <div class="results">
+        <div class="survival-stats">
+            <app-stat-results [stats]="stats$ | async"></app-stat-results>
+        </div>
+
+        <div class="survival-prediction">
+            <app-prediction-results [prediction]="prediction$ | async"></app-prediction-results>
+        </div>
+    </div>
+</div>

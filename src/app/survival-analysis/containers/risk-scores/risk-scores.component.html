@@ -1,0 +1,31 @@
+<div class="risk-scores-component">
+    <div style="padding-top: 20px;">
+        <form>
+            <div class="btn-group">
+                <div class="radio btn">
+                    <input type="radio" name="order" id="btn-asc" value="asc" [(ngModel)]="order" (change)="fetchPredictions()">
+                    <label for="btn-asc">Ascending</label>
+                </div>
+                <div class="radio btn">
+                    <input type="radio" name="order" id="btn-desc" value="desc" [(ngModel)]="order" (change)="fetchPredictions()">
+                    <label for="btn-desc">Descending</label>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <ng-container *ngIf="predictions$ | async as predictions">
+        <clr-datagrid >
+            <clr-dg-column>Neptun code</clr-dg-column>
+            <clr-dg-column>Risk Score</clr-dg-column>
+            
+            <clr-dg-row *ngFor="let prediction of predictions">
+                <clr-dg-cell>{{ prediction.neptunCode }}</clr-dg-cell>
+                <clr-dg-cell>{{ prediction.risk_score }}</clr-dg-cell>
+            </clr-dg-row>
+            
+            <clr-dg-footer>{{ predictions.length }} students</clr-dg-footer>
+        </clr-datagrid>
+    </ng-container>
+
+</div>

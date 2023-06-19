@@ -1,0 +1,22 @@
+.survival-stats-component {
+    .filter-bar {
+        padding-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .filter-select-container {
+            min-width: 200px;
+        }
+    }
+    
+    .results {
+        // .survival-stats {
+        //     padding-top: 20px;
+        // }
+
+        .survival-prediction {
+            padding-top: 20px;
+        }
+    }
+}

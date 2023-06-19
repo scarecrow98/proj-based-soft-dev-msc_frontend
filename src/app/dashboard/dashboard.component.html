@@ -1,0 +1,36 @@
+<div class="main-container dashboard">
+    <header class="header header-6">
+        <div class="branding">
+            <span class="title">University of Pannonia</span>
+        </div>
+    </header>
+    <div class="content-container">
+        <clr-vertical-nav>
+            <a clrVerticalNavLink routerLink="data-import" routerLinkActive="active">
+                <cds-icon clrVerticalNavIcon shape="upload-cloud"></cds-icon>
+                Data Import
+            </a>
+            <a clrVerticalNavLink routerLink="survival-analysis" routerLinkActive="active">
+                <cds-icon clrVerticalNavIcon shape="bar-chart"></cds-icon>
+                Student Survival Analysis
+            </a>
+            <a clrVerticalNavLink routerLink="instructor-statistics" routerLinkActive="active">
+                <cds-icon clrVerticalNavIcon shape="bar-chart"></cds-icon>
+                Instructor Statistics
+            </a>
+            <a clrVerticalNavLink routerLink="user-management" routerLinkActive="active"
+                *ngIf="(authService.user$ | async)?.userRoles?.includes('ADMIN')">
+                <cds-icon clrVerticalNavIcon shape="user"></cds-icon>
+                User Management
+            </a>
+            <div class="nav-divider"></div>
+            <a clrVerticalNavLink (click)="logout()">
+                <cds-icon clrVerticalNavIcon shape="logout"></cds-icon>
+                Logout
+            </a>
+        </clr-vertical-nav>
+        <div class="content-area">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

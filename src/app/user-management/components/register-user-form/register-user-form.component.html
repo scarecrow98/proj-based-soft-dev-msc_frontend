@@ -1,0 +1,57 @@
+<div class="register-user-form-component">
+
+    <form clrForm [formGroup]="form" (ngSubmit)="submit()">
+        <clr-input-container>
+            <label>Username</label>
+            <input
+                clrInput
+                placeholder="e.g. johndoe001"
+                formControlName="username"/>
+        </clr-input-container>
+        <clr-input-container>
+            <label>E-mail</label>
+            <input
+                clrInput
+                placeholder="e.g. aaaaaa@mik.uni-pannon.hu"
+                formControlName="email"/>
+        </clr-input-container>
+        <clr-input-container>
+            <label>Name</label>
+            <input
+                clrInput
+                placeholder="e.g. Teszt Elek"
+                formControlName="name"/>
+        </clr-input-container>
+<!-- 
+        <clr-radio-container clrInline>
+            <label>Role</label>
+            <clr-radio-wrapper>
+                <input type="radio" clrRadio value="admin" name="role" />
+                <label>Admin</label>
+            </clr-radio-wrapper>
+            <clr-radio-wrapper>
+                <input type="radio" clrRadio value="user" name="role" />
+                <label>User</label>
+            </clr-radio-wrapper>
+        </clr-radio-container> -->
+
+        <div>
+            <clr-input-container>
+                <label>Generated password</label>
+                <input
+                    clrInput
+                    placeholder="e.g. Teszt Elek"
+                    formControlName="password"
+                    />
+            </clr-input-container>
+
+            <button class="btn btn-outline" type="button" (click)="giveMeNewPassword()">
+                Generate password
+            </button>
+        </div>
+
+        <button class="btn btn-primary btn-create-user" style="margin-top: 60px;">
+            Create user
+        </button>
+    </form>
+</div>

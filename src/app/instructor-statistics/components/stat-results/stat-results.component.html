@@ -1,0 +1,35 @@
+<div class="stat-results-component">
+    <clr-accordion *ngIf="results" [clrAccordionMultiPanel]="true">
+        <clr-accordion-panel *ngFor="let resultsByInstructor of results | keyvalue">
+            <clr-accordion-title>{{ resultsByInstructor.key }}</clr-accordion-title>
+            <clr-accordion-content clrIfExpanded>
+                
+                <table class="table">
+                    <tr>
+                        <th>Tárgy</th>
+                        <th>Kurzuskód</th>
+                        <th>Félév aláírást szerzett hallgatók száma/Tantárgyat felvett hallgatók száma (%)</th>
+                        <th>Tárgyat teljesítő hallgatók száma/Félév aláírást szerzett hallgatók száma (%)</th>
+                        <th>Tárgyat teljesítő hallgatók száma/Tantárgyat felvett hallgatók száma (%)</th>
+                        <th>Tárgyat felvettek száma</th>
+                        <th>Aláírást szerzettek száma</th>
+                        <th>Aláírást nem szerzettek száma</th>
+                        <th>Tárgyat teljessítettek száma</th>
+                    </tr>
+                    <tr *ngFor="let item of resultsByInstructor.value">
+                        <th>{{ item.subjectName }}</th>
+                        <th>{{ item.courseCode }}</th>
+                        <th>{{ item.signaturePerEnrollment | percent }}</th>
+                        <th>{{ item.completedPerSignature | percent }}</th>
+                        <th>{{ item.completedPerEnrollment | percent }}</th>
+                        <th>{{ item.numberOfEnrollment }}</th>
+                        <th>{{ item.numberOfSignature }}</th>
+                        <th>{{ item.numberOfSignatureRefusal }}</th>
+                        <th>{{ item.numberOfCompleted }}</th>
+                    </tr>
+                </table>
+
+            </clr-accordion-content>
+        </clr-accordion-panel>
+    </clr-accordion>
+</div>

@@ -1,0 +1,38 @@
+<div class="upload-form-component" *ngIf="vm$ | async as vm">
+    <clr-alert
+        *ngIf="importResult"
+        [clrAlertType]="importResult.success ? 'success' : 'danger'">
+        <clr-alert-item>
+            <span class="alert-text">
+                {{ importResult.message }}
+            </span>
+        </clr-alert-item>
+    </clr-alert>
+
+    <div>
+        <input type="file" style="display: none" #fileInput (change)="onFileUploaded($event)">
+        <button class="btn btn-outline" (click)="fileInput.click()" [disabled]="loading">
+            Upload file from computer
+            <cds-icon shape="upload-cloud"></cds-icon>
+        </button>
+    </div>
+
+    <span class="label label-info" *ngIf="vm.uploadedFile">
+        {{ vm.uploadedFile.name }}
+        <cds-icon shape="window-close" (click)="removeFile()"></cds-icon>
+    </span>
+
+    <div>
+        <button class="btn btn-primary upload-button" [disabled]="!vm.uploadedFile || loading" (click)="onUpload.emit(vm.uploadedFile)">
+            Start import
+        </button>
+            
+        <ng-container *ngIf="loading">
+            <span class="spinner spinner-inline">
+            </span>
+            <span>
+                Processing...
+            </span>
+        </ng-container>
+    </div>
+</div>
